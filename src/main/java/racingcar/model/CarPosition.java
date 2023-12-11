@@ -22,7 +22,20 @@ public class CarPosition {
         }
     }
 
-    public Integer getEachCarPosition(int index) {
+    public int getEachCarPosition(int index) {
         return carPosition.get(index);
+    }
+
+    public List<Integer> getRaceWinner() {
+        int maxValue = Collections.max(this.carPosition);
+        List<Integer> winners = new ArrayList<>();
+
+        for (int i=0;i<this.carPosition.size();i++) {
+            if(this.carPosition.get(i).equals(maxValue)) {
+                winners.add(i);
+            };
+        }
+
+        return winners;
     }
 }

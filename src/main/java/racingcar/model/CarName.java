@@ -2,18 +2,19 @@ package racingcar.model;
 
 import racingcar.InputValidator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarName {
 
-    private List<String> carName;
+    private List<String> carNames;
 
     private CarName(String carName) {
-        List<String> carNames = Arrays.asList(carName.split(","));
+        List<String> carNames = Arrays.stream(carName.split(","))
+                .map(String::strip).collect(Collectors.toList());
         InputValidator.validateCarNames(carNames);
-        this.carName = carNames;
+        this.carNames = carNames;
     }
 
     public static CarName createCarName(String carName) {
@@ -21,11 +22,15 @@ public class CarName {
     }
 
     public int getCarNumber() {
-        return carName.size();
+        return carNames.size();
     }
 
     public String getEachCarName(int index) {
-        return carName.get(index);
+        return carNames.get(index);
+    }
+
+    public List<String> getWinnersName (List<Integer> winners) {
+        return winners.stream().map(i -> this.carNames.get(i)).collect(Collectors.toList());
     }
 
 }
