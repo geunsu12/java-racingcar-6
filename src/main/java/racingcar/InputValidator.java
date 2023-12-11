@@ -8,9 +8,9 @@ public class InputValidator {
     private InputValidator() {}
 
     public static void validateCarNames(List<String> carNames) throws IllegalArgumentException {
-        for(int i=0;i< carNames.size();i++) {
-            if(carNames.get(i).length() > Constants.MAX_NAME_LENGTH) {
-                throw new IllegalArgumentException();
+        for(String eachName : carNames) {
+            if(eachName.isEmpty() || eachName.length() > Constants.MAX_NAME_LENGTH) {
+                throw new IllegalArgumentException("이름의 길이를 확인해주세요.");
             }
         }
     }
