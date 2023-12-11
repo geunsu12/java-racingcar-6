@@ -31,12 +31,17 @@ public class Controller {
     }
 
     public void runEngine() {
+        Outputview.printResultMessage();
+
         while (repetition.repeatAvailable().equals(true)) {
             RandomMove randomMove = RandomMove.createRandomMove(carNumber);
             carPosition.moveCarPosition(randomMove.getRandomMove());
+            Outputview.printRaceResult(carName, carPosition);
             repetition.increaseRepetition();
         }
-        Outputview.printRaceResult(carName, carPosition);
+
+        Outputview.printRaceWinner(carName,carPosition);
+
     }
 
 }
