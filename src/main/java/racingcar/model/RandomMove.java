@@ -30,7 +30,6 @@ public class RandomMove {
     }
 
     public List<Integer> getRandomMove() {
-        System.out.println(randomMove);
         return Collections.unmodifiableList(randomMove);
     }
 
